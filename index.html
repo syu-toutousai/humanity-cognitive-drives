@@ -16,7 +16,7 @@
     --paper-2:#fffdf8;
     --ink:#1b1916;
     --ink-2:#433e36;
-    --muted:#786f61;
+    --muted:#6f6658;
     --line:#ded4c2;
     --line-strong:#c9bda7;
     --shadow:0 1px 0 rgba(27,25,22,.04), 0 24px 48px -36px rgba(27,25,22,.45);
@@ -233,6 +233,7 @@
   .closing p{
     margin:0;font-family:var(--serif);font-weight:500;
     font-size:clamp(1.3rem,3.6vw,1.9rem);line-height:2;letter-spacing:.08em;
+    text-wrap:balance;
   }
   .closing .rule{
     display:block;width:2.5rem;height:1px;background:var(--line-strong);
@@ -267,7 +268,7 @@
     .chain{display:grid;align-items:start;gap:1.35rem}
     .chain li{min-width:0;padding-left:0}
     .chain li + li{padding-left:0}
-    .chain li + li::before{content:"↓";left:0;top:-1.3rem;transform:none;line-height:1;font-size:.95rem}
+    .chain li + li::before{content:"↓";left:0;top:-1.3rem;transform:none;line-height:1;font-size:1.05rem;color:#8a8070}
   }
 
   @media (prefers-reduced-motion:reduce){
