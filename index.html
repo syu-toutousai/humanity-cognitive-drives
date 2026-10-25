@@ -135,7 +135,7 @@
   h2{
     font-family:var(--serif);font-weight:600;
     font-size:clamp(1.55rem,4vw,2.25rem);line-height:1.3;
-    letter-spacing:.06em;margin:0;
+    letter-spacing:.06em;margin:0;text-wrap:balance;
   }
   .terms{display:flex;flex-wrap:wrap;gap:.3rem .9rem;margin:.4rem 0 0;font-size:.79rem;color:var(--muted)}
   .terms .en{font-family:var(--mono);letter-spacing:.01em}
@@ -264,10 +264,10 @@
     .flow-arrow span{transform:rotate(90deg)}
     .gloss > div{grid-template-columns:1fr;gap:.1rem}
     .gloss dt{padding-top:0}
-    .chain{flex-direction:column;align-items:flex-start;gap:.9rem}
+    .chain{display:grid;align-items:start;gap:1.35rem}
+    .chain li{min-width:0;padding-left:0}
     .chain li + li{padding-left:0}
-    .chain li + li::before{content:"↓";left:-1.1rem;top:0;transform:none}
-    .chain li + li{padding-left:1.15rem}
+    .chain li + li::before{content:"↓";left:0;top:-1.3rem;transform:none;line-height:1;font-size:.95rem}
   }
 
   @media (prefers-reduced-motion:reduce){
