@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人間性を動かす三つの装置 — パターン・意図・因果</title>
+<meta name="description" content="パターン性向・意図バイアス・因果の錯覚。意味を作りすぎる脳の三つの認知ドライブを、日本語を主軸に英語・中国語の注を添えて整理する。">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人間性を動かす三つの装置 — パターン・意図・因果">
+<meta property="og:description" content="パターン性向・意図バイアス・因果の錯覚。意味を作りすぎる脳の解剖。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b1916'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='%23f5f1e8' font-family='serif'%3E%E4%B8%89%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --paper:#f5f1e8;
+    --paper-2:#fffdf8;
+    --ink:#1b1916;
+    --ink-2:#433e36;
+    --muted:#786f61;
+    --line:#ded4c2;
+    --line-strong:#c9bda7;
+    --shadow:0 1px 0 rgba(27,25,22,.04), 0 24px 48px -36px rgba(27,25,22,.45);
+    --serif:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP","Source Han Serif JP",serif;
+    --sans:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 620px at 50% -12%, #fffdf7 0%, rgba(255,253,247,0) 72%),
+      var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  ::selection{background:#e7dcc6;color:var(--ink)}
+  a{color:inherit}
+  a:focus-visible,summary:focus-visible{outline:2px solid #2f5d8a;outline-offset:3px;border-radius:4px}
+
+  .skip{
+    position:absolute;left:1rem;top:-100px;z-index:10;
+    background:var(--ink);color:var(--paper-2);
+    padding:.5rem .9rem;border-radius:8px;font-size:.8rem;text-decoration:none;
+  }
+  .skip:focus{top:1rem}
+
+  .wrap{width:min(100% - 2.5rem, 60rem);margin-inline:auto}
+
+  /* ---------- hero ---------- */
+  .hero{padding:clamp(3.25rem,8vw,6.5rem) 0 clamp(1.5rem,4vw,2.5rem)}
+  .seal{
+    width:62px;height:62px;border:1px solid var(--line-strong);border-radius:50%;
+    display:grid;place-items:center;margin-bottom:1.6rem;
+    font-family:var(--serif);font-size:1.7rem;line-height:1;
+    color:var(--ink);background:rgba(255,253,248,.55);
+  }
+  .kicker{
+    display:flex;align-items:center;gap:.85rem;margin:0;
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .kicker::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--line-strong),transparent)}
+  h1{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(2.05rem,6.2vw,4rem);line-height:1.24;
+    letter-spacing:.045em;margin:.95rem 0 0;
+  }
+  .hero .sub{
+    font-family:var(--serif);font-size:clamp(1rem,2.2vw,1.28rem);
+    color:var(--ink-2);letter-spacing:.06em;margin:.8rem 0 0;
+  }
+  .trilingual{
+    display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;
+    margin:1.6rem 0 0;font-size:.76rem;color:var(--muted);
+  }
+  .trilingual .en{font-family:var(--mono);letter-spacing:.02em}
+  .trilingual .zh{letter-spacing:.08em}
+  .lede{max-width:40em;margin:1.5rem 0 0;font-size:1rem;color:var(--ink-2)}
+  .legend{
+    display:flex;flex-wrap:wrap;align-items:center;gap:.45rem .7rem;
+    margin:1.75rem 0 0;padding-top:1rem;border-top:1px solid var(--line);
+    font-size:.72rem;color:var(--muted);letter-spacing:.04em;
+  }
+  .legend .tag{
+    font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;
+    border:1px solid var(--line);border-radius:999px;padding:.05rem .45rem;
+    background:rgba(255,255,255,.4);
+  }
+
+  /* ---------- pipeline ---------- */
+  .flow{
+    list-style:none;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;
+    gap:.6rem;align-items:stretch;padding:0;margin:0 0 clamp(2.25rem,5vw,3.5rem);
+  }
+  .flow li{
+    display:flex;flex-direction:column;gap:.1rem;
+    background:var(--paper-2);border:1px solid var(--line);
+    border-radius:14px;padding:.9rem 1rem;box-shadow:var(--shadow);
+  }
+  .flow-num{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;color:var(--muted)}
+  .flow strong{font-family:var(--serif);font-weight:600;font-size:1rem;letter-spacing:.05em}
+  .flow em{font-style:normal;font-size:.7rem;color:var(--muted);letter-spacing:.02em}
+  .flow-arrow{
+    display:grid;place-items:center;background:none;border:0;box-shadow:none;
+    padding:0 .05rem;color:var(--line-strong);font-size:1.05rem;
+  }
+
+  /* ---------- cards ---------- */
+  .card{
+    --accent:#2f5d8a;
+    position:relative;background:var(--paper-2);
+    border:1px solid var(--line);border-radius:20px;
+    padding:clamp(1.5rem,4vw,2.75rem);
+    box-shadow:var(--shadow);margin-bottom:1.6rem;
+    scroll-margin-top:1.5rem;
+  }
+  .card::before{
+    content:"";position:absolute;top:1.5rem;bottom:1.5rem;left:0;width:3px;
+    border-radius:0 3px 3px 0;
+    background:linear-gradient(180deg,var(--accent),rgba(0,0,0,0) 80%);
+    opacity:.75;
+  }
+  .card-head{display:flex;gap:1.1rem;align-items:baseline}
+  .num{
+    font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;
+    color:var(--accent);padding-top:.35rem;
+  }
+  h2{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(1.55rem,4vw,2.25rem);line-height:1.3;
+    letter-spacing:.06em;margin:0;
+  }
+  .terms{display:flex;flex-wrap:wrap;gap:.3rem .9rem;margin:.4rem 0 0;font-size:.79rem;color:var(--muted)}
+  .terms .en{font-family:var(--mono);letter-spacing:.01em}
+  .terms .zh{letter-spacing:.08em}
+
+  .definition{
+    margin-top:1.5rem;padding:1.05rem 1.25rem;
+    border-left:3px solid var(--accent);border-radius:0 10px 10px 0;
+    background:#f8f4ec;
+    background:color-mix(in srgb, var(--accent) 5%, #fffdf8);
+  }
+  .label{
+    margin:0 0 .35rem;font-family:var(--mono);font-size:.62rem;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--accent);
+  }
+  .def-ja{
+    margin:0;font-family:var(--serif);
+    font-size:clamp(1.02rem,2.2vw,1.16rem);line-height:1.95;letter-spacing:.03em;
+  }
+  .gloss{
+    display:grid;gap:.55rem;margin:.85rem 0 0;padding-top:.8rem;
+    border-top:1px dashed var(--line-strong);
+  }
+  .gloss > div{display:grid;grid-template-columns:3.1rem 1fr;gap:.7rem;align-items:start}
+  .gloss dt{
+    font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;
+    color:var(--muted);padding-top:.3rem;
+  }
+  .gloss dd{margin:0;font-size:.83rem;line-height:1.75;color:var(--ink-2)}
+
+  .body{display:grid;gap:1rem;margin-top:1.45rem}
+  .body p{margin:0;font-size:.97rem;letter-spacing:.015em;color:var(--ink-2)}
+
+  .keys{
+    list-style:none;display:flex;flex-wrap:wrap;gap:.4rem;
+    margin:1.5rem 0 0;padding:1.05rem 0 0;border-top:1px solid var(--line);
+  }
+  .keys li{
+    font-size:.71rem;letter-spacing:.05em;color:var(--muted);
+    border:1px solid var(--line);border-radius:999px;
+    padding:.14rem .65rem;background:rgba(255,255,255,.45);
+  }
+
+  /* ---------- synthesis ---------- */
+  .synthesis{
+    margin:clamp(2.5rem,6vw,4.25rem) 0 0;
+    padding:clamp(1.6rem,4vw,2.9rem);
+    background:#1d1b17;color:#eee8db;border-radius:20px;
+    box-shadow:0 40px 70px -55px rgba(27,25,22,.9);
+  }
+  .synthesis .kicker{color:#a79c88}
+  .synthesis .kicker::after{background:linear-gradient(90deg,#4b4437,transparent)}
+  .synthesis h2{color:#f7f1e4;font-size:clamp(1.5rem,3.6vw,2rem);margin-top:.9rem}
+  .synthesis p{color:#cfc6b5;font-size:.97rem;margin:1rem 0 0}
+  .chain{
+    list-style:none;display:flex;flex-wrap:wrap;align-items:center;
+    gap:.5rem 1.4rem;padding:0;margin:1.75rem 0 0;
+  }
+  .chain li{display:flex;flex-direction:column;gap:.05rem;min-width:7.5rem}
+  .chain .chain-num{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;color:#c9a86a}
+  .chain b{font-family:var(--serif);font-weight:600;font-size:1.05rem;letter-spacing:.05em;color:#f4eee1}
+  .chain em{font-style:normal;font-size:.7rem;color:#a79c88}
+  .chain li + li{position:relative;padding-left:1.4rem}
+  .chain li + li::before{
+    content:"→";position:absolute;left:0;top:50%;transform:translateY(-50%);
+    color:#5c5445;font-size:.95rem;
+  }
+  .synthesis .payoff{
+    margin:1.75rem 0 0;padding-top:1.25rem;border-top:1px solid #3a352b;
+    font-family:var(--serif);font-size:clamp(1rem,2.2vw,1.12rem);
+    color:#e9e1d1;letter-spacing:.04em;
+  }
+
+  /* ---------- checks ---------- */
+  .checks-wrap{margin-top:clamp(2.25rem,5vw,3.5rem);padding-top:.5rem}
+  .checks-wrap h2{font-size:clamp(1.4rem,3.4vw,1.8rem)}
+  .checks{list-style:none;counter-reset:check;margin:1.4rem 0 0;padding:0;display:grid;gap:.9rem}
+  .checks li{
+    counter-increment:check;position:relative;
+    padding:1rem 1.15rem 1rem 3.6rem;
+    border:1px solid var(--line);border-radius:14px;background:rgba(255,253,248,.65);
+    font-size:.93rem;color:var(--ink-2);
+  }
+  .checks li::before{
+    content:"0" counter(check);position:absolute;left:1.15rem;top:1rem;
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--muted);
+  }
+  .checks strong{display:block;font-family:var(--serif);font-weight:600;font-size:1rem;letter-spacing:.04em;color:var(--ink);margin-bottom:.1rem}
+
+  /* ---------- closing ---------- */
+  .closing{
+    margin:clamp(2.75rem,6vw,4.5rem) auto 0;max-width:38em;text-align:center;
+    padding:0;border:0;
+  }
+  .closing p{
+    margin:0;font-family:var(--serif);font-weight:500;
+    font-size:clamp(1.3rem,3.6vw,1.9rem);line-height:2;letter-spacing:.08em;
+  }
+  .closing .rule{
+    display:block;width:2.5rem;height:1px;background:var(--line-strong);
+    margin:1.5rem auto 0;
+  }
+
+  /* ---------- refs / footer ---------- */
+  .refs{
+    margin:clamp(2.5rem,5vw,3.5rem) 0 0;padding-top:1.1rem;
+    border-top:1px solid var(--line);font-size:.82rem;color:var(--muted);
+  }
+  .refs summary{cursor:pointer;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase}
+  .refs ul{margin:1rem 0 0;padding-left:1.1rem;line-height:1.85}
+  .refs li{margin-bottom:.35rem}
+  .refs .en{font-family:var(--mono);font-size:.74rem}
+
+  footer{
+    margin-top:clamp(2.5rem,5vw,3.5rem);padding:1.5rem 0 3rem;
+    border-top:1px solid var(--line);
+    display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;justify-content:space-between;
+    font-size:.74rem;color:var(--muted);letter-spacing:.03em;
+  }
+  footer a{text-decoration:none;border-bottom:1px solid var(--line-strong);padding-bottom:1px}
+  footer a:hover{color:var(--ink);border-color:var(--ink)}
+
+  @media (max-width:720px){
+    .flow{grid-template-columns:1fr;gap:.45rem}
+    .flow-arrow{transform:rotate(90deg);padding:.15rem 0}
+    .gloss > div{grid-template-columns:1fr;gap:.1rem}
+    .gloss dt{padding-top:0}
+    .chain{flex-direction:column;align-items:flex-start;gap:.9rem}
+    .chain li + li{padding-left:0}
+    .chain li + li::before{content:"↓";left:-1.1rem;top:0;transform:none}
+    .chain li + li{padding-left:1.15rem}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{transition:none !important;animation:none !important}
+  }
+
+  @media print{
+    body{background:#fff}
+    .card,.flow li,.synthesis{box-shadow:none}
+    .card{break-inside:avoid}
+    .skip{display:none}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へスキップ</a>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="seal" aria-hidden="true">三</div>
+    <p class="kicker">Cognitive Drives / 認知ドライブ</p>
+    <h1>人間性を動かす<br>三つの装置</h1>
+    <p class="sub">パターン・意図・因果 — 意味を作りすぎる脳の解剖</p>
+    <p class="trilingual">
+      <span class="en" lang="en">Patternicity · Intentionality Bias · Causal Illusion</span>
+      <span class="zh" lang="zh-Hans">模式偏执 · 意图偏见 · 因果执念</span>
+    </p>
+    <p class="lede">
+      人間は世界をありのままに見ない。ノイズから形を抜き出し、形に主体を読み、出来事を因果で縫い合わせる。
+      宗教も科学も陰謀論も、この同じ一本の線から生まれる。
+    </p>
+    <p class="legend">
+      <span class="tag">JA</span> 本文（主軸）
+      <span class="tag">EN</span> 英語注
+      <span class="tag">中文</span> 中国語注
+    </p>
+  </header>
+
+  <main id="main">
+    <ol class="flow" aria-label="三つの装置の連鎖">
+      <li>
+        <span class="flow-num">01</span>
+        <strong>形を見つける</strong>
+        <em lang="en">Pattern detection</em>
+        <em lang="zh-Hans">模式识别</em>
+      </li>
+      <li class="flow-arrow" aria-hidden="true">→</li>
+      <li>
+        <span class="flow-num">02</span>
+        <strong>主体を読む</strong>
+        <em lang="en">Agency attribution</em>
+        <em lang="zh-Hans">主体归因</em>
+      </li>
+      <li class="flow-arrow" aria-hidden="true">→</li>
+      <li>
+        <span class="flow-num">03</span>
+        <strong>物語に縫う</strong>
+        <em lang="en">Causal stitching</em>
+        <em lang="zh-Hans">因果缝合</em>
+      </li>
+    </ol>
+
+    <article class="card" id="pattern" style="--accent:#2f5d8a">
+      <div class="card-head">
+        <span class="num">01</span>
+        <div>
+          <h2>パターン性向</h2>
+          <p class="terms">
+            <span class="en" lang="en">Patternicity / Apophenia</span>
+            <span class="zh" lang="zh-Hans">模式偏执</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="definition">
+        <p class="label">定義</p>
+        <p class="def-ja">無意味なノイズの中に、意味のあるパターンや相関を読み込んでしまう傾向。</p>
+        <dl class="gloss">
+          <div>
+            <dt lang="en">EN</dt>
+            <dd lang="en">The tendency to detect meaningful patterns in meaningless, random data.</dd>
+          </div>
+          <div>
+            <dt lang="zh-Hans">中文</dt>
+            <dd lang="zh-Hans">在无意义的随机数据中强行寻找有意义模式的倾向。</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="body">
+        <p>雲が動物に見える。星を結んで星座にする。偶然続いた災厄に「巡り合わせ」を読む。脳は、信号とノイズの境界が曖昧な世界で、まず「形がある」と仮定する。</p>
+        <p>この過剰適合は欠陥ではなく、設計の副作用だ。猛獣の気配を見落とすコストは、風の音を猛獣と誤認するコストより、はるかに高い。偽陽性を恐れない知覚は、生存に適していた。</p>
+        <p>言語、芸術、科学の仮説も、この装置から出てくる。ただし同じ装置が、陰謀論、血液型と性格の相関、宏大な歴史哲学も生産する。仮説を立てる力と、仮説を疑えない力は、同じ一つの力である。</p>
+      </div>
+
+      <ul class="keys" aria-label="関連語">
+        <li>アポフェニア</li>
+        <li>空想性錯視</li>
+        <li>過剰適合</li>
+        <li>偽陽性コスト</li>
+      </ul>
+    </article>
+
+    <article class="card" id="intent" style="--accent:#9a5b3f">
+      <div class="card-head">
+        <span class="num">02</span>
+        <div>
+          <h2>意図バイアス</h2>
+          <p class="terms">
+            <span class="en" lang="en">Intentionality Bias</span>
+            <span class="zh" lang="zh-Hans">意图偏见</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="definition">
+        <p class="label">定義</p>
+        <p class="def-ja">無生物・偶然・複雑な創発システムの背後に、意図や目的を持つ主体を想定してしまう傾向。</p>
+        <dl class="gloss">
+          <div>
+            <dt lang="en">EN</dt>
+            <dd lang="en">The tendency to assume that inanimate objects, random events, or complex emergent systems are controlled by a conscious agent with a specific purpose or will.</dd>
+          </div>
+          <div>
+            <dt lang="zh-Hans">中文</dt>
+            <dd lang="zh-Hans">倾向于假设无生命体、随机事件或复杂的涌现系统由具有特定目的或意志的有意识主体所操纵。</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="body">
+        <p>誰も操縦していない世界は、寒い。市場、アルゴリズム、資本、歴史——複雑な創発の背後に、人格を置きたくなる。古代の神も、現代の「黒幕」も、「世界の裏で糸を引く誰か」という同じ構図の裾野にいる。</p>
+        <p>これは道徳的な直観の裏面でもある。責任を問うには、まず「意図した主体」が要る。誰かのせいにしたいという欲望は、しばしば因果の説明より先に、容疑者を作る。</p>
+        <p>日本語では、アニミズム的投影、目的論的解釈、神格化といった語が近い。英語圏では過活性な主体検出（hyperactive agency detection）や目的論的推論（teleological reasoning）として議論される。</p>
+      </div>
+
+      <ul class="keys" aria-label="関連語">
+        <li>目的論的誤謬</li>
+        <li>アニミズム的投影</li>
+        <li>過活性な主体検出</li>
+        <li>神格化</li>
+      </ul>
+    </article>
+
+    <article class="card" id="causal" style="--accent:#4c6b52">
+      <div class="card-head">
+        <span class="num">03</span>
+        <div>
+          <h2>因果の錯覚</h2>
+          <p class="terms">
+            <span class="en" lang="en">Causal Illusion / Illusory Correlation</span>
+            <span class="zh" lang="zh-Hans">因果执念</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="definition">
+        <p class="label">定義</p>
+        <p class="def-ja">実際には結びついていない二つの出来事の間に、因果を見てしまう錯覚。</p>
+        <dl class="gloss">
+          <div>
+            <dt lang="en">EN</dt>
+            <dd lang="en">The false belief that two events are causally related when they are not, often driven by an inability to accept the pure, unattached present moment.</dd>
+          </div>
+          <div>
+            <dt lang="zh-Hans">中文</dt>
+            <dd lang="zh-Hans">由于无法接受纯粹、无着落的「当下」，进而错误地相信两个本无关联的事件之间存在因果关系的虚假信念。</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="body">
+        <p>二つの出来事が続けて起きると、脳は「だから」と接続詞を補う。相関は因果ではない、と知っていても、体はそう感じる。錯誤相関は、この補完が自動で走ることを示している。</p>
+        <p>因果は、時間を一本の線に変える。過去を遡って原因を探し、未来を先取りして結果を恐れる。因果応報、宿命、終末予言——どれも、この線の上に描かれた物語だ。</p>
+        <p>介入と反実仮想は、因果を物語から検証へ引き戻す道具である。相関を見たら、まず「触ったら変わるか」を問う。哲学的には、「今ここ」に耐えられないことが因果の物語を駆動する、という読み方もできる。</p>
+      </div>
+
+      <ul class="keys" aria-label="関連語">
+        <li>錯誤相関</li>
+        <li>事後の物語化</li>
+        <li>反実仮想</li>
+        <li>永遠の今</li>
+      </ul>
+    </article>
+
+    <section class="synthesis" aria-labelledby="synthesis-title">
+      <p class="kicker">Synthesis / 総合</p>
+      <h2 id="synthesis-title">三つは、直列につながっている</h2>
+      <ol class="chain">
+        <li>
+          <span class="chain-num">01</span>
+          <b>パターン</b>
+          <em lang="en">Pattern</em>
+        </li>
+        <li>
+          <span class="chain-num">02</span>
+          <b>意図</b>
+          <em lang="en">Agent</em>
+        </li>
+        <li>
+          <span class="chain-num">03</span>
+          <b>因果</b>
+          <em lang="en">Cause</em>
+        </li>
+      </ol>
+      <p>パターン性向が見つけた「形」に、意図バイアスが「誰か」を読み、因果の錯覚が「なぜ」を縫い合わせる。三つは別々の欠陥ではなく、一つのパイプライン——意味製造機の三つの工程だ。</p>
+      <p>予測処理の見方では、脳は常に世界のモデルを走らせ、予測誤差を小さくするように更新する。三つの装置は更新を速める。だが誤差を物語で埋めてしまえば、モデルは世界から離れて独走する。独走したモデルは、世界の説明ではなく、世界の代用品になる。</p>
+      <p class="payoff">装置を止める必要はない。止められない。必要なのは、いま自分が何を作っているかを、作りながら知っていることだ。</p>
+    </section>
+
+    <section class="checks-wrap" aria-labelledby="checks-title">
+      <h2 id="checks-title">点検のための四つの問い</h2>
+      <ol class="checks">
+        <li>
+          <strong>反証条件は何か。</strong>
+          このパターンが崩れると分かる観察は、具体的に何か。反証できない物語は、説明ではなく雰囲気である。
+        </li>
+        <li>
+          <strong>主体なしで説明できるか。</strong>
+          「誰か」を置く前に、制度・偶然・フィードバックの組み合わせだけで説明を試す。
+        </li>
+        <li>
+          <strong>介入できるか。</strong>
+          相関ではなく因果を主張するなら、触って変わるか、反実仮想を置けるか。
+        </li>
+        <li>
+          <strong>いま、何が起きているか。</strong>
+          物語の外側——呼吸、感覚、目の前の作業——に注意を戻す。ただし「今ここ」も、もう一つの物語になりうる。
+        </li>
+      </ol>
+    </section>
+
+    <blockquote class="closing">
+      <p>世界は意味を持たない。<br>意味は、こちら側が作り続けている。</p>
+      <span class="rule" aria-hidden="true"></span>
+    </blockquote>
+
+    <details class="refs">
+      <summary>References / 参考文献</summary>
+      <ul>
+        <li>Shermer, M. (2008). Patternicity: Finding Meaningful Patterns in Meaningless Noise. <span class="en">Scientific American</span>.</li>
+        <li>Conrad, K. (1958). <span class="en">Die beginnende Schizophrenie</span>.（Apophänie / アポフェニア）</li>
+        <li>Chapman, L. J., &amp; Chapman, J. P. (1967). Genesis of popular but erroneous psychodiagnostic observations. <span class="en">Journal of Abnormal Psychology</span>.</li>
+        <li>Guthrie, S. E. (1993). <span class="en">Faces in the Clouds: A New Theory of Religion</span>.</li>
+        <li>Taleb, N. N. (2007). <span class="en">The Black Swan</span>.（物語の誤謬）</li>
+        <li>Seth, A. (2021). <span class="en">Being You: A New Science of Consciousness</span>.（予測処理）</li>
+      </ul>
+    </details>
+  </main>
+
+  <footer>
+    <span>日本語を主軸に、英語・中国語を注として併記</span>
+    <span><a href="https://github.com/syu-toutousai/humanity-cognitive-drives" lang="en">GitHub / syu-toutousai</a> · 2026</span>
+  </footer>
+</div>
+</body>
+</html>
