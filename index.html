@@ -105,10 +105,12 @@
   .flow-num{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;color:var(--muted)}
   .flow strong{font-family:var(--serif);font-weight:600;font-size:1rem;letter-spacing:.05em}
   .flow em{font-style:normal;font-size:.7rem;color:var(--muted);letter-spacing:.02em}
-  .flow-arrow{
-    display:grid;place-items:center;background:none;border:0;box-shadow:none;
-    padding:0 .05rem;color:var(--line-strong);font-size:1.05rem;
+  .flow li.flow-arrow{
+    display:grid;place-items:center;align-self:center;
+    background:none;border:0;box-shadow:none;min-width:1.5rem;
+    padding:0;color:var(--line-strong);font-size:1.05rem;
   }
+  .flow-arrow span{display:inline-block}
 
   /* ---------- cards ---------- */
   .card{
@@ -257,8 +259,9 @@
   footer a:hover{color:var(--ink);border-color:var(--ink)}
 
   @media (max-width:720px){
-    .flow{grid-template-columns:1fr;gap:.45rem}
-    .flow-arrow{transform:rotate(90deg);padding:.15rem 0}
+    .flow{grid-template-columns:1fr;gap:.4rem}
+    .flow li.flow-arrow{height:1.1rem;padding:0}
+    .flow-arrow span{transform:rotate(90deg)}
     .gloss > div{grid-template-columns:1fr;gap:.1rem}
     .gloss dt{padding-top:0}
     .chain{flex-direction:column;align-items:flex-start;gap:.9rem}
@@ -312,14 +315,14 @@
         <em lang="en">Pattern detection</em>
         <em lang="zh-Hans">模式识别</em>
       </li>
-      <li class="flow-arrow" aria-hidden="true">→</li>
+      <li class="flow-arrow" aria-hidden="true"><span>→</span></li>
       <li>
         <span class="flow-num">02</span>
         <strong>主体を読む</strong>
         <em lang="en">Agency attribution</em>
         <em lang="zh-Hans">主体归因</em>
       </li>
-      <li class="flow-arrow" aria-hidden="true">→</li>
+      <li class="flow-arrow" aria-hidden="true"><span>→</span></li>
       <li>
         <span class="flow-num">03</span>
         <strong>物語に縫う</strong>
